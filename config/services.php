@@ -35,4 +35,8 @@ return [
         ],
     ],
 
+    'countries_now' => [
+        //access token would go here
+        'url' => env('COUNTRIES_NOW_URL')
+    ]
 ];
