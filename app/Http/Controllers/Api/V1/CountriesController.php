@@ -21,6 +21,5 @@ class CountriesController extends Controller
         $response = $this->apiService->makeApiRequest();
 
         return response()->json(json_decode($response));
-
     }
 }

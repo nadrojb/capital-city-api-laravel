@@ -8,3 +8,9 @@ test('returns successful response for endpoint', function() {
     $response->assertStatus(200);
 });
 
+test('returns 404 response for invalid endpoint', function () {
+    $response = $this->get('/api/v1/countrie');
+
+    $response->assertStatus(404);
+});
+

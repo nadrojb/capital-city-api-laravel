@@ -25,10 +25,7 @@ class APIService
                 'timeout' => 30
             ]);
 
-            if ($response->getStatusCode() == '200') {
-
-                return $response->getBody()->getContents();
-            }
+            return $response->getBody()->getContents();
 
         } catch (RequestException $e) {
             return response()->json([
