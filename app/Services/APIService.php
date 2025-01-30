@@ -4,6 +4,7 @@
 namespace App\Services;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Exception\RequestException;
 
 
@@ -23,10 +24,21 @@ class APIService
             $response = $this->client->get(config('services.countries_now.url'), [
                 'timeout' => 10
             ]);
-            return $response->getBody()->getContents();
-        } catch (RequestException $e) {
 
-            return 'API request failed: ' . $e->getMessage();
+            return $response->getBody()->getContents();
+
+        } catch (RequestException $e) {
+            return response()->json([
+                'error' => true,
+                'msg' => 'Request error: ' . $e->getMessage(),
+                'status' => 500,
+            ], 500);
+        } catch (ConnectException $e) {
+            return response()->json([
+                'error' => true,
+                'msg' => 'Connection error: ' . $e->getMessage(),
+                'status' => 500,
+            ], 500);
         }
     }
 }

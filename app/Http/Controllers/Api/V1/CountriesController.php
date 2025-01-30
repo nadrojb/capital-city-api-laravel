@@ -9,7 +9,7 @@ use Illuminate\Http\JsonResponse;
 class CountriesController extends Controller
 {
 
-    protected $apiService;
+    protected APIService $apiService;
 
     public function __construct(APIService $apiService)
     {
