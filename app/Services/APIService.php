@@ -22,10 +22,13 @@ class APIService
         try {
 
             $response = $this->client->get(config('services.countries_now.url'), [
-                'timeout' => 10
+                'timeout' => 30
             ]);
 
-            return $response->getBody()->getContents();
+            if ($response->getStatusCode() == '200') {
+
+                return $response->getBody()->getContents();
+            }
 
         } catch (RequestException $e) {
             return response()->json([
