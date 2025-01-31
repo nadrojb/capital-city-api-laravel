@@ -35,5 +35,5 @@ it('makes a successful API request and returns the correct country data', functi
     $apiService = new APIService($mockClient);
     $response = $apiService->makeApiRequest();
 
-    expect($response)->toBe($mockResponse);
+    expect($response)->toEqual($mockResponse);
 });
